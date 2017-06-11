@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<title>Create Survey</title>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+
+<script src="lib/angular.min.js"></script>
+<script src="js/controller.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="shortcut icon" href="img/favicon.ico" />
+ 
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+	<!--  <a class="navbar-brand" href="index.html"><img src="img/Aricent_Logo.jpg" alt="Aricent SurveyT" style="width:120px;height:35px" ></a> -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+          					
+   </div>
+   
+   <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+
+    </form>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <ul class="nav navbar-nav navbar-right">
+
+       <li><a href="index.html" class = "btn btn-default btn-xs" role = "button"></i>Logout</a></li>
+      </ul>
+    </div>
+	
+    </form>
+  </div>
+</nav>
+
+<div class="col-md-6 col-md-offset-3">
+    <h2>Enter Survey Details</h2>
+	<div ng-controller="MyController">
+        <form ng-submit="submitSurvey()">
+			<div class="form-group" ng-class="{ 'has-error': form.SurveyName.$dirty && form.SurveyName.$error.required }">
+				<label for="username">Survey name</label>
+				<input type="text" name="SurveyName" id="SurveyName" class="form-control" ng-model="form.SurveyName" required />
+				<span ng-show="form.SurveyName.$dirty && form.SurveyName.$error.required" class="help-block">Survey name is required</span>
+			</div>
+			<div class="form-group" ng-class="{ 'has-error': form.SurveyDescription.$dirty && form.SurveyDescription.$error.required }">
+				<label for="username">Survey Description</label>
+				<textarea name="SurveyDescription" cols="40" rows="5" id="SurveyDescription" class="form-control" ng-model="form.SurveyDescription" required></textarea>
+				<span ng-show="form.SurveyDescription.$dirty && form.SurveyDescription.$error.required" class="help-block">Survey Desc is required</span>
+			</div>
+			<div>
+				<button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+			</div>
+        </form>
+		</div>
+</div>
+
+
+
+
+ <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//code.angularjs.org/1.6.0/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.6.0/angular-route.min.js"></script>
+    <script src="//code.angularjs.org/1.6.0/angular-cookies.min.js"></script>
+	
+	</body>
+</html>

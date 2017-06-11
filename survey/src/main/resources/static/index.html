@@ -1,38 +1,83 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<title>Survey Tool</title>
 <head>
-	<script type="text/javascript" src="js/materialize.js"></script>
-	<script type="text/javascript" src="js/angular.min.js"></script>
-	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/jsonload.js"></script>
-	<link rel="stylesheet" href="css/materialize.min.css">
-	<link rel="stylesheet" href="css/main.css">
+<script src="lib/angular.min.js"></script>
+<script src="js/controller.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="shortcut icon" href="img/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 </head>
 <body>
-	<div class="main">
-		<div>
-		<nav>
-			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo right">Logout</a>
-				<ul class="left hide-on-med-and-down">
-					<li><a href="index1.html">Home</a></li>
-					<li><a href="index1.html">My Surveys</a></li>
-				</ul>
-			</div>
-		</nav>
-		</div>
-		<div class="row ">
-		    <div class="s12 m6 " ng-app="myApp" ng-controller="pagecontroller">
-				<div class="card blue-grey darken-2 custom1" ng-repeat="item in database">
-				   <div class="card-content white-text">
-					 <span class="card-title">Survey Title</span>
-					 <p>{{item.surveyDescription}}</p>
-				   </div>
-				   <div class="card-action">
-					 <a href="#">Take me to the Survey</a>
-				   </div>
-				</div>
-		    </div>
-		</div>
-	</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+	<!--  <a class="navbar-brand" href="index.html"><img src="img/Aricent_Logo.jpg" alt="Aricent SurveyT" style="width:120px;height:35px" ></a> -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+          					
+   </div>
+   
+   <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+
+    </form>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <ul class="nav navbar-nav navbar-right">
+
+		 
+        <!-- <li><a class = "btn btn-primary btn-lg" role = "button">Learn more</a></li> -->
+		<li><a href="register.view.html" class = "btn btn-default btn-xs" role = "button"></i>Register</a></li> 
+       
+      </ul>
+    </div>
+	
+    </form>
+  </div>
+</nav>
+
+<div class = "jumbotron">
+   
+   <div class = "container text-center">
+      <h1>Welcome to Aricent Survey Tool!</h1>
+	 
+     </div>
+	   
+</div>
+<div class="col-md-6 col-md-offset-3">
+    <h2>Login</h2>
+    <form name="form" ng-submit="vm.login()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" ng-model="vm.username" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="vm.password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Login</button>
+            <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            
+        </div>
+    </form>
+</div>
+
+
+ <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//code.angularjs.org/1.6.0/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.6.0/angular-route.min.js"></script>
+    <script src="//code.angularjs.org/1.6.0/angular-cookies.min.js"></script>
+    
 </body>
 </html>

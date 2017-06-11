@@ -36,4 +36,16 @@ public class Survey {
 		this.surveyDescription = surveyDescription;
 	}
 	
+	public Survey(Integer id, String surveyName, String surveyDescription) {
+		super();
+        this.id = id;
+        this.surveyName = surveyName;
+        this.surveyDescription = surveyDescription;		
+	}
+	
+	public Survey() {
+		
+		
+	}
+	
 }
